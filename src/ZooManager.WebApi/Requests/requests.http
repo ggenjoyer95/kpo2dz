@@ -1,0 +1,56 @@
+### Получить всех животных
+GET http://localhost:5100/api/Animals
+Accept: application/json
+
+### Создать вольер
+POST http://localhost:5100/api/Enclosures
+Content-Type: application/json
+
+{
+  "type": "Herbivore",
+  "size": 100.0,
+  "capacity": 5
+}
+
+### Создать животное
+POST http://localhost:5100/api/Animals
+Content-Type: application/json
+
+{
+  "name": "Leo",
+  "species": "Carnivore",
+  "gender": "Male",
+  "birthDate": "2023-01-01T00:00:00Z",
+  "favoriteFood": "Meat"
+}
+
+### Переместить животное
+POST http://localhost:5100/api/Animals/32b6f1bb-77aa-4374-beeb-9dcc29d9c7ee/transfer
+Content-Type: application/json
+
+{
+  "targetEnclosureId": "77bbe51c-b794-4fc3-8786-7a2e0715653d"
+}
+
+### Добавить кормление
+POST http://localhost:5100/api/FeedingSchedules
+Content-Type: application/json
+
+{
+  "animalId": "32b6f1bb-77aa-4374-beeb-9dcc29d9c7ee",
+  "feedingTime": "2025-04-21T12:00:00Z",
+  "foodType": "Meat"
+}
+
+
+### Выполнить кормления на сегодня
+POST http://localhost:5100/api/FeedingSchedules/execute-today
+
+### Получить статистику
+GET http://localhost:5100/api/ZooStatistics
+Accept: application/json
+
+### В
+GET http://localhost:5100/api/Enclosures
+### В
+GET http://localhost:5100/api/FeedingSchedules
